@@ -1,0 +1,19 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal {
+    background: #fff;
+    padding: 24px;
+    width: 400px;
+}
+
+.searchForm {
+    display: flex;
+    flex-direction: column;
+}
