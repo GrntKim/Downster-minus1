@@ -1,0 +1,10 @@
+.container {
+    display: grid;
+    gap: 4px;
+}
+
+.gridCell {
+    aspect-ratio: 1;
+    background: #222;
+    cursor: pointer;
+}
