@@ -1,5 +1,20 @@
 import { useState } from 'react'
+import { useDraggable } from '@dnd-kit/core';
 import styles from './Search.module.css'
+
+function DraggableAlbum({ album }) {
+    const { attributes, listeners, setNodeRef } = useDraggable({
+        id: album.collectionId,
+        data: album
+    });
+
+    return (
+        <div ref={setNodeRef} {...listeners} {...attributes}>
+            <img src={album.artworkUrl100} alt={album.collectionName} />
+            <span>{album.collectionName}</span>
+        </div>
+    )
+}
 
 export default function SearchForm () {
     const [query, setQuery] = useState('');
@@ -25,10 +40,7 @@ export default function SearchForm () {
             <button onClick={handleSearch}>Search</button>
             <div className={styles.results}>
                 {results.map(album => (
-                    <div key={album.collectionId} className={styles.resultItem}>
-                        <img src={album.artworkUrl100} alt={album.collectionName} />
-                        <span>{album.collectionName}</span>
-                    </div>
+                    <DraggableAlbum album={album} />
                 ))}
             </div>
         </div>
